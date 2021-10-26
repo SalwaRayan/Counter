@@ -8,19 +8,43 @@ class App extends React.Component {
     super()
 
     this.state = {
-      count: 0
+      count1: 0,
+      count2: 1
     }
   }
 
-  substract = () => {
-    if (this.state.count > 0) {
-      return this.setState({count: this.state.count -= 1})
+  substract1 = () => {
+    if (this.state.count1 > 1) {
+      this.setState({count1: this.state.count1 -= 1})
+    }
+
+  }
+
+  substract2 = () => {
+    if (this.state.count2 > 1) {
+      if (this.state.count1 === this.state.count2 - 1) {
+        this.setState({count1: this.state.count1 -= 1})
+        this.setState({count2: this.state.count2 -= 1})
+      } else {
+        this.setState({count2: this.state.count2 -= 1})
+      }
     }
   }
 
-  increment = () => {
-    if (this.state.count < 100) {
-      return this.setState({count: this.state.count += 1})
+  increment1 = () => {
+    if (this.state.count1 < 99) {
+      if (this.state.count1 === this.state.count2 - 1) {
+        this.setState({count1: this.state.count1 += 1})
+        this.setState({count2: this.state.count2 += 1})
+      } else {
+        this.setState({count1: this.state.count1 += 1})
+      }
+    }
+  }
+
+  increment2 = () => {
+    if (this.state.count2 < 99) {
+      this.setState({count2: this.state.count2 += 1})
     }
   }
   
@@ -28,7 +52,8 @@ class App extends React.Component {
     return (
       <div class="box">
         <h1>Counter</h1>
-        <Counter count={this.state.count} increment={this.increment}  substract={this.substract}/>
+        <Counter count={this.state.count1} increment={this.increment1}  substract={this.substract1}/>
+        <Counter count={this.state.count2} increment={this.increment2}  substract={this.substract2}/>
       </div>
     )
   }
