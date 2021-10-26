@@ -24,7 +24,7 @@ class App extends React.Component {
   
   render() {
     return (
-      <div>
+      <div class="box">
         <h1>Counter</h1>
         <Counter count={this.state.count} increment={this.increment}  substract={this.substract}/>
       </div>
