@@ -18,9 +18,11 @@ class App extends React.Component {
     }
   }
 
-  increment = () => (
-    this.setState({count: this.state.count += 1})
-  )
+  increment = () => {
+    if (this.state.count < 100) {
+      return this.setState({count: this.state.count += 1})
+    }
+  }
   
   render() {
     return (
